@@ -1,0 +1,8 @@
+{
+    "probabilidade": {
+        "eliminar": 4,
+        "duplicar": 3,
+        "corromper": 2
+    },
+    "delay": 80
+}
