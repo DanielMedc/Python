@@ -1,6 +1,6 @@
 import json
 import random
-
+import time
 class Canal:
     def __init__(self, config):
         self.probabilidades = self.carregar_probabilidades(config)
@@ -17,6 +17,8 @@ class Canal:
 
     def aplicar_propriedades(self, mensagem):
         self.c_total += 1
+        delay= self.probabilidades["delay"] / 1000
+        time.sleep(delay)
         # 8 - Corromper 1 bit com probabilidade especificada no arquivo JSON
         if random.randint(0, 99) < int(self.probabilidades["probabilidade"]["corromper"]):
             # Escolhe aleatoriamente um índice dentro da mensagem

@@ -14,14 +14,7 @@ class Cliente:
         if self.ip == '':
             self.ip = '127.0.0.1'
         self.config = config
-        self.delay = self.carregar_delay()
 
-    def carregar_delay(self):
-        with open(self.config, 'r') as f:
-            config = json.load(f)
-        #Abrir o arquivo e ler o delay do json
-        #time.sleep é em segundo,logo dividir por 1000 para milisegundos
-        return (config["delay"] / 1000)
     
     def enviar_n(self):
         #Enviar ao servidor o número de mensagens para o servidor se preparar
@@ -34,7 +27,6 @@ class Cliente:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.sendto(bytes(self.mensagem, "utf-8"), (self.ip, self.porta_s))
         # 6 - delay
-        time.sleep(self.delay)
         s.close()
 
     def ACK(self):
